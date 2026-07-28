@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#12301E">
+<title>Pauls Soundsystem-Bingo — Deine Bingokarte</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="karte.css">
+</head>
+<body class="karte-body">
+
+<canvas id="confetti-canvas"></canvas>
+
+<div class="karte-app">
+
+  <header class="karte-head">
+    <h1>Pauls Soundsystem-Bingo</h1>
+    <p class="karte-hint">Deine Bingokarte — tippe ein Feld an, sobald es beim Ratespiel richtig erraten wurde.</p>
+  </header>
+
+  <div id="warning" class="karte-warning"></div>
+
+  <div id="grid" class="karte-grid"></div>
+
+</div>
+
+<div id="bingo-overlay" class="bingo-overlay">
+  <div class="bingo-text">BINGO!</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="data.js"></script>
+<script src="pool.js"></script>
+<script src="audio.js"></script>
+<script src="karte.js"></script>
+</body>
+</html>

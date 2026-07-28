@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pauls Soundsystem-Bingo — Druckansicht</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --deep-green:#163220;
+  --mid-green:#2E5A3A;
+  --sage-2:#C3D2B9;
+  --gold:#C9A24B;
+  --gold-bright:#EFC968;
+  --cream:#FBF7EC;
+}
+*{box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background: var(--cream);
+  margin:0;
+  color:#17241A;
+}
+.toolbar{
+  display:flex; gap:12px; align-items:center;
+  padding: 16px 24px;
+  position: sticky; top:0;
+  background: var(--cream);
+  border-bottom: 2px solid var(--sage-2);
+  z-index: 10;
+}
+.toolbar h1{
+  font-family:'Inter',sans-serif;
+  font-weight:800;
+  font-size: 20px;
+  margin:0;
+  color: var(--deep-green);
+  flex:1;
+}
+button{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  border-radius: 999px;
+  border: 2px solid var(--gold);
+  background: transparent;
+  color: var(--deep-green);
+  padding: 9px 18px;
+  cursor:pointer;
+}
+button:hover{ background: var(--gold); }
+#warning{ color:#B4463A; font-size:13px; padding: 0 24px; }
+
+#cards{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 24px;
+  padding: 24px;
+}
+
+.card{
+  width: 148mm;
+  height: 210mm;
+  background:white;
+  border: 2px solid var(--sage-2);
+  border-radius: 10px;
+  padding: 10mm 8mm;
+  display:flex;
+  flex-direction:column;
+  page-break-after: always;
+  box-shadow: 0 4px 14px rgba(22,50,32,.12);
+}
+.card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  font-family:'Inter',sans-serif;
+  font-weight:800;
+  color: var(--deep-green);
+  font-size: 20px;
+  margin-bottom: 8mm;
+  border-bottom: 2px solid var(--sage-2);
+  padding-bottom: 4mm;
+}
+.card-no{ font-size:13px; font-weight:600; color: var(--mid-green); }
+
+.grid{
+  display:grid;
+  gap: 2.5mm;
+  flex:1;
+}
+.cell{
+  border: 1.5px solid var(--sage-2);
+  border-radius: 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size: 9.5px;
+  line-height:1.15;
+  padding: 2mm;
+  font-weight:600;
+  color:#17241A;
+}
+.cell.song{ background: rgba(46,90,58,.08); border: none; }
+.cell.guest{
+  background: rgba(201,162,75,.14);
+  border-color: var(--gold);
+}
+.cell.free{
+  background: var(--gold-bright);
+  font-family:'Inter',sans-serif;
+  font-weight:800;
+  color: var(--deep-green);
+  font-size: 13px;
+}
+
+@media print{
+  .toolbar, #warning{ display:none; }
+  body{ background:white; }
+  #cards{ padding:0; gap:0; }
+  .card{ box-shadow:none; border:none; margin:0 auto; }
+  @page{ size: A5; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>🎈 Pauls Soundsystem-Bingo — Druckansicht</h1>
+  <button id="reshuffle-btn">Neu mischen</button>
+  <button id="print-btn">Drucken / Als PDF speichern</button>
+</div>
+<div id="warning"></div>
+<div id="cards"></div>
+
+<script src="data.js"></script>
+<script src="pool.js"></script>
+<script src="bingo.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+/* ============================================================
+   MOBILE BINGOKARTE — eigenes Layout, nutzt Farb-Tokens aus style.css
+   ============================================================ */
+
+body.karte-body{
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.karte-app{
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 18px 14px 28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.karte-head{
+  text-align:center;
+  margin-bottom: 14px;
+}
+.karte-head h1{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size: clamp(24px, 7vw, 30px);
+  color: var(--gold-bright);
+  margin: 0 0 6px;
+}
+.karte-hint{
+  font-size: 13px;
+  color: var(--sage-2);
+  margin: 0;
+  line-height:1.4;
+}
+
+.karte-warning{
+  color: var(--red);
+  background: white;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  display:none;
+}
+.karte-warning.show{ display:block; }
+
+.karte-grid{
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1 / 1;
+  display:grid;
+  gap: 6px;
+  margin-bottom: 18px;
+  touch-action: manipulation;
+}
+
+.karte-cell{
+  background: white;
+  border: 2px solid var(--sage-2);
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 4px;
+  font-size: 10.5px;
+  line-height:1.15;
+  font-weight:600;
+  color: var(--deep-green);
+  cursor:pointer;
+  user-select:none;
+  transition: background .18s ease, border-color .18s ease, transform .1s ease;
+}
+.karte-cell:active{ transform: scale(.96); }
+.karte-cell.song{ background: var(--song-light); border: none; }
+.karte-cell.guest{ background: var(--gold); border-color: var(--gold); }
+.karte-cell.marked{
+  background: var(--mid-green) !important;
+  color: white !important;
+  border-color: var(--mid-green);
+}
+.karte-cell.win-line{
+  box-shadow: 0 0 0 3px var(--gold-bright) inset;
+}
+
+.bingo-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index: 1000;
+  background: rgba(18,48,30,.88);
+  align-items:center;
+  justify-content:center;
+}
+.bingo-overlay.show{
+  display:flex;
+}
+.bingo-text{
+  font-family:'Inter', sans-serif;
+  font-weight:700;
+  font-size: clamp(48px, 18vw, 96px);
+  color: var(--gold-bright);
+  text-shadow: 0 0 30px rgba(239,201,104,.6);
+  animation: bingo-pop .5s ease;
+}
+@keyframes bingo-pop{
+  0%{ transform: scale(.4); opacity:0; }
+  60%{ transform: scale(1.12); opacity:1; }
+  100%{ transform: scale(1); }
+}
+
+@media (max-width: 360px){
+  .karte-cell{ font-size: 9.5px; }
+}

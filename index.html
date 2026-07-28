@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pauls Soundsystem-Bingo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<div class="app">
+
+  <header class="top">
+    <h1>Pauls Soundsystem-Bingo</h1>
+    <div class="status-line">
+      <div class="stat-badge">
+        <span class="stat-label">Runde</span>
+        <span class="stat-value" id="round-label">–</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-label">Erraten</span>
+        <span class="stat-value" id="progress-label">0/0</span>
+      </div>
+    </div>
+  </header>
+
+  <div id="finish-overlay" class="finish-overlay">
+    <div class="finish-text">Happy Birthday, Paul!</div>
+    <button id="finish-reset-btn" class="btn">Neues Spiel starten</button>
+  </div>
+
+  <div class="stage">
+    <div class="col pool-col">
+      <p class="pool-col-label">🎵 Songs &amp; Interpreten</p>
+      <div id="song-pool" class="pool-list"></div>
+    </div>
+
+    <div class="col tracks-col">
+      <div id="tracks" class="tracks"></div>
+    </div>
+
+    <div class="col pool-col">
+      <p class="pool-col-label">👤 Gäste</p>
+      <div id="guest-pool" class="pool-list"></div>
+    </div>
+  </div>
+
+  <footer class="controls">
+    <button id="reset-btn" class="btn ghost">Spiel zurücksetzen</button>
+    <div id="log" class="log"></div>
+    <button id="skip-btn" class="btn">Überspringen</button>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="data.js"></script>
+<script src="audio.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
