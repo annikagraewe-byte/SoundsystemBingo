@@ -92,7 +92,7 @@ header.top h1{
   flex: 1 1 auto;
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(180px, 240px);
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr) minmax(220px, 300px);
   gap: 14px;
 }
 
@@ -118,11 +118,15 @@ header.top h1{
   top: 0;
 }
 .pool-list{
-  display:flex;
-  flex-direction:column;
-  gap: 8px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
 }
-.pool-list .tile{ width:100%; }
+.pool-list .tile{
+  width:100%;
+  font-size: 11px;
+  padding: 7px 8px;
+}
 
 /* Track column (center) */
 .tracks-col{ padding-right: 4px; }
@@ -208,8 +212,8 @@ header.top h1{
 .tile.song{ background: var(--song-light); color: var(--deep-green); }
 .tile.guest{ background: var(--gold); color: var(--deep-green); }
 .tile.correct{
-  background: var(--gold-bright) !important;
-  color: var(--deep-green) !important;
+  background: var(--mid-green) !important;
+  color: white !important;
 }
 .tile.wrong-flash{
   background: var(--red) !important;

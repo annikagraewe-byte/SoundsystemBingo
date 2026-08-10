@@ -9,21 +9,26 @@
    ============================================================ */
 
 const TRACKS = [
-  { position: 1,  title: "Nordisch by Nature",     artist: "Fettes Brot",              guest: "Steffi & Helge" },
-  { position: 2,  title: "I Hate Doing Laundry",       artist: "Psychostick",         guest: "Marco" },
-  { position: 3,  title: "Sounds Like a Melody",       artist: "Alpahville",         guest: "Julia" },
-  { position: 4,  title: "ミラクルショッピング〜恋に落ちて〜",       artist: "RSP",         guest: "Mila & Julian" },
-  { position: 5,  title: "Where is My Mind",       artist: "Maxence Cyrin",         guest: "Annika" },
-  { position: 6,  title: "We didn't Start the Fire",       artist: "Hildegard von Blingin'",         guest: "Jan" },
-  { position: 7,  title: "Part of the Machine",       artist: "Die Krupps",         guest: "Alex & Maw" },
-  { position: 8,  title: "Blank Space",       artist: "Taylor Swift",         guest: "Geno" },
-  { position: 9,  title: "Experience",       artist: "Ludovico Einaudi",         guest: "LJ" },
-  { position: 10,  title: "You're Welcome",       artist: "Dwayne Johnson",         guest: "Sabrina & Marvin" },
-  { position: 11,  title: "Nabucco - Va, pensiero",       artist: "Guiseppe Verdi",         guest: "Simona" },
-  { position: 12,  title: "Pump It",       artist: "Electric Callboy",         guest: "Erika" },
-  { position: 13,  title: "Ich war noch niemals in New York",       artist: "Udo Jürgens",         guest: "Manuela" },
-  { position: 14,  title: "Wat mutt, dat mutt",       artist: "Godewind",         guest: "Manfred" },
-  { position: 15,  title: "Sozusagen grundlos vergnügt",       artist: "Dota Kehr",         guest: "Anabelle" }
+  { position: 1,  title: "Nordisch by Nature, Pt. 1",   artist: "Fettes Brot, Gaze Matratze, Der Tobi & Das Bo", guest: "Steffi & Helge" },
+  { position: 2,  title: "I Hate Doing Laundry",         artist: "Psychostick",                                   guest: "Marco Folk" },
+  { position: 3,  title: "Sounds Like a Melody",         artist: "Alphaville",                                    guest: "Julia" },
+  { position: 4,  title: "ミラクルショッピング〜恋に落ちて〜", artist: "RSP",                                          guest: "Mila & Julian" },
+  { position: 5,  title: "Where Is My Mind (Live)",      artist: "Maxence Cyrin",                                 guest: "Annika" },
+  { position: 6,  title: "Attack of the Killer Tomatoes Theme", artist: "Mr Dooves",                              guest: "Björn & Annett" },
+  { position: 7,  title: "Sozusagen grundlos vergnügt",  artist: "Dota Kehr",                                     guest: "Annabelle" },
+  { position: 8,  title: "Part of the Machine",          artist: "Die Krupps",                                    guest: "Alex & Maw" },
+  { position: 9,  title: "Blank Space",                  artist: "Taylor Swift",                                  guest: "Geno" },
+  { position: 10, title: "Nabucco / Act III: Va, pensiero", artist: "Giuseppe Verdi",                             guest: "Simona" },
+  { position: 11, title: "Experience",                   artist: "Ludovico Einaudi",                              guest: "LJ" },
+  { position: 12, title: "You're Welcome",                artist: "Dwayne Johnson, Disney",                       guest: "Sabrina & Marvin" },
+  { position: 13, title: "Pump It",                       artist: "Electric Callboy",                             guest: "Erika" },
+  { position: 14, title: "Ich war noch niemals in New York", artist: "Udo Jürgens",                               guest: "Manuela" },
+  { position: 15, title: "We Didn't Start the Fire",      artist: "Hildegard von Blingin'",                       guest: "Jan" },
+  { position: 16, title: "Christmas Truce",               artist: "Sabaton",                                      guest: "Alec" },
+  { position: 17, title: "Wenn Inge tanzt",               artist: "SYSTEMFEHLER",                                 guest: "Anne" },
+  { position: 18, title: "GoT Theme",                     artist: "Ramin Djawadi",                                guest: "Ben" },
+  { position: 19, title: "Far Over the Misty Mountains Cold", artist: "Clamavi De Profundis",                     guest: "Erik" },
+  { position: 20, title: "Wat mutt, dat mutt",            artist: "Godewind",                                     guest: "Manfred" }
 ];
 
 /* Anzahl der Bingokarten, die für den Druck erzeugt werden */
