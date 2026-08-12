@@ -15,7 +15,7 @@ const TRACKS = [
   { position: 4,  title: "Sounds Like a Melody",         artist: "Alphaville",                                    guest: "Julia" },
   { position: 5,  title: "Where Is My Mind (Live)",      artist: "Maxence Cyrin",                                 guest: "Annika" },
   { position: 6,  title: "Attack of the Killer Tomatoes Theme", artist: "Mr Dooves",                              guest: "Björn & Annett" },
-  { position: 7,  title: "Sozusagen grundlos vergnügt",  artist: "Dota Kehr",                                     guest: "Annabelle" },
+  { position: 7,  title: "Sozusagen grundlos vergnügt",  artist: "Dota Kehr",                                     guest: "Anabelle" },
   { position: 8,  title: "Part of the Machine",          artist: "Die Krupps",                                    guest: "Alex & Maw" },
   { position: 9,  title: "Blank Space",                  artist: "Taylor Swift",                                  guest: "Geno" },
   { position: 10, title: "Nabucco / Act III: Va, pensiero", artist: "Giuseppe Verdi",                             guest: "Simona" },
