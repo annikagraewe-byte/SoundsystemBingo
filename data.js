@@ -11,7 +11,7 @@
 const TRACKS = [
   { position: 1,  title: "Nordisch by Nature, Pt. 1",   artist: "Fettes Brot, Gaze Matratze, Der Tobi & Das Bo", guest: "Steffi & Helge" },
   { position: 2,  title: "ミラクルショッピング〜恋に落ちて〜", artist: "RSP",                                          guest: "Mila & Julian" },
-  { position: 3,  title: "I Hate Doing Laundry",         artist: "Psychostick",                                   guest: "Marco Folk" },
+  { position: 3,  title: "I Hate Doing Laundry",         artist: "Psychostick",                                   guest: "Marco" },
   { position: 4,  title: "Sounds Like a Melody",         artist: "Alphaville",                                    guest: "Julia" },
   { position: 5,  title: "Where Is My Mind (Live)",      artist: "Maxence Cyrin",                                 guest: "Annika" },
   { position: 6,  title: "Attack of the Killer Tomatoes Theme", artist: "Mr Dooves",                              guest: "Björn & Annett" },
