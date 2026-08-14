@@ -185,6 +185,11 @@ async function pausePlayback(deviceId){
   try{ await apiFetch('/me/player/pause' + query, { method: 'PUT' }); }catch(e){ /* egal, evtl. schon pausiert */ }
 }
 
+async function resumePlayback(deviceId){
+  const query = deviceId ? ('?device_id=' + encodeURIComponent(deviceId)) : '';
+  await apiFetch('/me/player/play' + query, { method: 'PUT' });
+}
+
 /* ---------- Web Playback SDK (Browser-Tab als Gerät) ---------- */
 
 let sdkReady = false;
@@ -231,6 +236,7 @@ window.SpotifyIntegration = {
   initLocalPlayer,
   playTrack,
   pausePlayback,
+  resumePlayback,
   getTrackDuration,
   LOCAL_DEVICE_LABEL: 'Dieser Laptop (Browser)'
 };

@@ -97,9 +97,12 @@ function loadState(){
 
 function resetGame(){
   if(!confirm('Spielstand wirklich zurücksetzen? Das kann nicht rückgängig gemacht werden.')) return;
+  clearTrackTimeoutTimer();
+  if(spotifyDeviceId) SpotifyIntegration.pausePlayback(spotifyDeviceId);
   localStorage.removeItem(STORAGE_KEY);
   initState();
   render();
+  if(spotifyDeviceId) onTrackAdvanced(); // startet automatisch wieder bei Track 1
 }
 
 /* ---------- Gameplay actions ---------- */
@@ -251,6 +254,10 @@ function fireConfetti(){
 
 let spotifyDeviceId = null;
 let trackTimeoutTimer = null;
+let isPaused = false;
+let currentTrackDurationMs = null;
+let trackStartedAt = null;
+let trackElapsedBeforePause = 0;
 
 function clearTrackTimeoutTimer(){
   if(trackTimeoutTimer){
@@ -261,8 +268,15 @@ function clearTrackTimeoutTimer(){
 
 function onTrackAdvanced(){
   clearTrackTimeoutTimer();
+  isPaused = false;
+  trackElapsedBeforePause = 0;
+  updatePauseButton();
   const pos = currentTrackPosition();
-  if(pos === null) return; // Spiel fertig — nichts mehr zu spielen
+  if(pos === null){
+    // Spiel fertig — laufenden Song stoppen, nur noch Applaus soll zu hören sein
+    if(spotifyDeviceId) SpotifyIntegration.pausePlayback(spotifyDeviceId);
+    return;
+  }
   playCurrentTrackViaSpotify(pos);
 }
 
@@ -274,11 +288,50 @@ async function playCurrentTrackViaSpotify(pos){
   try{
     const durationMs = await SpotifyIntegration.getTrackDuration(trackData.spotifyUri);
     await SpotifyIntegration.playTrack(trackData.spotifyUri, spotifyDeviceId);
+    currentTrackDurationMs = durationMs;
+    trackStartedAt = Date.now();
+    trackElapsedBeforePause = 0;
     clearTrackTimeoutTimer();
     trackTimeoutTimer = setTimeout(handleTrackTimeout, durationMs + 400);
   }catch(err){
     console.warn('Spotify-Wiedergabe fehlgeschlagen:', err);
     setStartStatus('Wiedergabe fehlgeschlagen: ' + err.message);
+  }
+}
+
+/* ---------- Pause / Fortsetzen ---------- */
+
+function updatePauseButton(){
+  const btn = document.getElementById('pause-btn');
+  if(!btn) return;
+  btn.textContent = isPaused ? '▶ Play' : '⏸ Pause';
+  btn.disabled = !spotifyDeviceId || currentTrackPosition() === null;
+}
+
+async function handlePauseToggle(){
+  if(!spotifyDeviceId || currentTrackPosition() === null) return;
+
+  if(!isPaused){
+    // pausieren
+    trackElapsedBeforePause += Date.now() - trackStartedAt;
+    clearTrackTimeoutTimer();
+    isPaused = true;
+    updatePauseButton();
+    try{ await SpotifyIntegration.pausePlayback(spotifyDeviceId); }
+    catch(err){ console.warn('Pause fehlgeschlagen:', err); }
+  } else {
+    // fortsetzen
+    isPaused = false;
+    updatePauseButton();
+    trackStartedAt = Date.now();
+    try{
+      await SpotifyIntegration.resumePlayback(spotifyDeviceId);
+      const remaining = Math.max((currentTrackDurationMs || 0) - trackElapsedBeforePause, 0);
+      clearTrackTimeoutTimer();
+      trackTimeoutTimer = setTimeout(handleTrackTimeout, remaining + 400);
+    }catch(err){
+      console.warn('Fortsetzen fehlgeschlagen:', err);
+    }
   }
 }
 
@@ -351,6 +404,7 @@ function render(flash){
   renderPools(flash);
   renderLog();
   updateFinishCelebration();
+  updatePauseButton();
 }
 
 function renderStatus(){
@@ -561,6 +615,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('connect-btn').addEventListener('click', () => SpotifyIntegration.connect());
   document.getElementById('start-btn').addEventListener('click', handleStartClick);
   document.getElementById('refresh-devices-btn').addEventListener('click', populateDeviceList);
+  document.getElementById('pause-btn').addEventListener('click', handlePauseToggle);
 
   await SpotifyIntegration.handleRedirect();
   await refreshStartScreen();
