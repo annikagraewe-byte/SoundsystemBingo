@@ -1,0 +1,49 @@
+/* ============================================================
+   ZUSÄTZLICHE STYLES FÜR DIE SPOTIFY-STEUERUNG
+   style.css bleibt unangetastet — hier kommt nur das Neue dazu.
+   ============================================================ */
+
+/* Leeres Zielfeld blitzt rot auf (Weiter-Klick / Songende ohne Tipp) */
+.slot.wrong-flash{
+  background: var(--red) !important;
+  border-color: var(--red) !important;
+  color: white !important;
+}
+
+#start-overlay{
+  gap: 18px;
+}
+
+.start-hint{
+  color: var(--sage-2);
+  font-size: 14px;
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.device-select{
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--gold);
+  background: var(--deep-green);
+  color: var(--gold-bright);
+  min-width: 260px;
+}
+
+.start-actions{
+  display:flex;
+  gap: 12px;
+  justify-content:center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.start-status{
+  min-height: 18px;
+  font-size: 13px;
+  color: var(--sage-2);
+  text-align: center;
+  max-width: 420px;
+}
